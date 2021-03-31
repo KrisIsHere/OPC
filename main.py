@@ -1,23 +1,13 @@
-import socket
-import threading
-import os
+import socket,threading,os
 from sys import platform
-if platform == "linux" or platform == "linux2":
-    os.system("cp -r info tools")
-    os.chdir("tools")
-elif platform == "darwin":
-    print("OPC is currently not supported for mac")
-    sys.exit()
-elif platform == "win32":
-    os.system("copy info /tools")
-    os.chdir("tools")
-else:
-    print("Platform not recognised...")
-    sys.exit()
+import CompatibilityModules as CM
 
-def win(server, nickname):
+CM.copy("info", "tools")
+os.chdir("tools")
+
+def win():
         def chat():
-                os.system("cls")
+                CM.clearscreen()
 
                 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 client.connect((server, 14900))
@@ -47,7 +37,7 @@ def win(server, nickname):
                 write_thread.start()
 
         def main():
-            os.system("cls")
+            CM.clearscreen()
             print("OPC 0.4 | Coded by \033[0;31mKrisIsHere\033[97;40m & \033[0;31mOwenwastaken\033[97;40m")
             print("What would you like to do?: \n\033[92;40m1\033[97;40m) Join \033[92;40m2\033[97;40m) Host \033[92;40m3\033[97;40m) Update \033[92;40m00\033[97;40m) Extra: ")
             loopy = True
@@ -60,6 +50,7 @@ def win(server, nickname):
                         print("Server is up and running!")
                         os.system("python server.py")
                 elif xd == "3":
+                    """
                     os.chdir('..')
                     path = os.getcwd()
                     parent = os.path.abspath(os.path.join(path, os.pardir))
@@ -67,6 +58,9 @@ def win(server, nickname):
                     os.system("copy -r tools/OPC_update.py " + parent)
                     os.system("python " + parent + "/OPC_update.py")
                     os.chdir('tools')
+                    """
+                    print("The online updater currently does not work with windows.")
+                    print("This issue will be fixed soon.")
                 elif xd == "00":
                     print("\033[92;40mabout\033[97;40m) About \033[92;40mhelp\033[97;40m) Help \033[92;40mcredit\033[97;40m) Credits  \033[92;40mclear\033[97;40m) Clear")
                 elif xd == "help":
@@ -113,7 +107,7 @@ def win(server, nickname):
                         main()
 
 
-def linux(server, nickname):
+def linux():
     def chat():
             os.system("clear")
             nickname = input("Choose your \033[0;31mnickname\033[97;40m: ")
@@ -212,22 +206,11 @@ def linux(server, nickname):
                     loooop = False
                     main()
 
-nickname = input("Choose your \033[0;31mnickname\033[97;40m: ")
-server = input("Enter \033[92;40mserver \033[0;31mIP\033[97;40m: ")
-
+CM.clearscreen()
 if platform == "linux" or platform == "linux2":
-    os.system("clear")
-    linux(nickname, server)
+    linux()
 elif platform == "win32":
-    os.system("cls")
-    win(nickname, server)
+    win()
 else:
-    print("Platform not recognised...")
+    print("Platform not supported")
     sys.exit()
-
-
-def clearscreen(platform):
-    if platform == "win32":
-        os.system('cls')
-    else:
-        os.system('clear')
