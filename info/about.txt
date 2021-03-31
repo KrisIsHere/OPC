@@ -1,0 +1,1 @@
+OPC is a python3 chat application developed by KrisIsHere and Owenwastaken

@@ -1,0 +1,19 @@
+How to use?
+
+1. Open OPC
+
+2. Select option
+
+3. Enjoy
+
+How to host a server?
+
+1. Open port 14900 on your network
+
+2. Select 2 in the menu
+
+3. Enjoy
+
+Can you update?
+
+Yes, just press '3' in the menu and the rest takes care of itself.
