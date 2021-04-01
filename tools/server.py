@@ -1,12 +1,14 @@
-import socket
-import threading
+import socket,threading,requests
 
-host = '127.0.0.1'
+host = input("What is your computer's local IP? Ex. 192.168.0.15: ")
 port = 14900
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((host, port))
 server.listen()
+
+print('')
+print("Server is hosted at", requests.get('http://ip.42.pl/raw').text)
 
 clients = []
 nicknames = []
