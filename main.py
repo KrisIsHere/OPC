@@ -8,7 +8,7 @@ os.chdir("tools")
 def win():
         def main():
             CM.clearscreen()
-            print("OPC 0.4 | Coded by \033[0;31mKrisIsHere\033[97;40m & \033[0;31mOwenwastaken\033[97;40m")
+            print("OPC 0.4.2 | Coded by \033[0;31mKrisIsHere\033[97;40m & \033[0;31mOwenwastaken\033[97;40m")
             print("What would you like to do?: \n\033[92;40m1\033[97;40m) Join \033[92;40m2\033[97;40m) Host \033[92;40m3\033[97;40m) Update \033[92;40m00\033[97;40m) Extra: ")
             loopy = True
             while loopy == True:
@@ -79,9 +79,12 @@ def win():
 
 
 def linux():
+    os.chdir("..")
+    os.system("cp -r info tools")
+    os.chdir("tools")
     def main():
         os.system("clear")
-        print("OPC 0.4 | Coded by \033[0;31mKrisIsHere\033[97;40m & \033[0;31mOwenwastaken\033[97;40m")
+        print("OPC 0.4.2 | Coded by \033[0;31mKrisIsHere\033[97;40m & \033[0;31mOwenwastaken\033[97;40m")
         print("What would you like to do?: \n\033[92;40m1\033[97;40m) Join \033[92;40m2\033[97;40m) Host \033[92;40m3\033[97;40m) Update \033[92;40m00\033[97;40m) Extra: ")
         loopy = True
         while loopy == True:
