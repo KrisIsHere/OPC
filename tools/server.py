@@ -1,4 +1,8 @@
-import socket,threading,requests
+import socket,threading
+try:
+    import requests
+except:
+    
 
 host = input("What is your computer's local IP? Ex. 192.168.0.15: ")
 port = 14900
