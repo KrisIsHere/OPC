@@ -2,6 +2,14 @@ import socket,threading
 try:
     import requests
 except:
+    print('Module "Requests" not found.')
+    xd = input("Would you like to install it automatically? (\033[0;33mY\033[97;40m/\033[0;33mN\033[92;40m\033[97;40m): ")
+    if xd == "Y":
+        os.system("pip3 install requests")
+    if xd == "y":
+        os.system("pip3 install requests")
+    else:
+        exit()
     
 
 host = input("What is your computer's local IP? Ex. 192.168.0.15: ")
