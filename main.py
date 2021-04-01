@@ -1,13 +1,18 @@
 import socket,threading,os
 from sys import platform
-import CompatibilityModules as CM
 
-CM.copy("info", "tools")
+if platform == "win32":
+    os.system('copy info tools')
+else:
+    os.system('cp -r info /tools')
+
 os.chdir("tools")
 
 def win():
+    input("Warning: Windows is not completely supported in the main branch of OPC. It is recomended that you use the owen-dev branch for better compatibility. Press ENTER to continue")
+    os.system('cls')
         def main():
-            CM.clearscreen()
+            os.system('cls')
             print("OPC 0.4.2 | Coded by \033[0;31mKrisIsHere\033[97;40m & \033[0;31mOwenwastaken\033[97;40m")
             print("What would you like to do?: \n\033[92;40m1\033[97;40m) Join \033[92;40m2\033[97;40m) Host \033[92;40m3\033[97;40m) Update \033[92;40m00\033[97;40m) Extra: ")
             loopy = True
@@ -59,11 +64,11 @@ def win():
                     lmao = input("Do you wish to continue? (\033[0;33mY\033[97;40m/\033[0;33mN\033[92;40m\033[97;40m): ")
                     if lmao == "y":
                         os.system("mkdir .info ; touch .info/first_time.py")
-                        os.system("clear")
+                        os.system("cls")
                         main()
                     if lmao == "Y":
                         os.system("mkdir .info ; touch .info/first_time.py")
-                        os.system("clear")
+                        os.system("cls")
                         main()
 
                 else:
@@ -148,10 +153,11 @@ def linux():
                     loooop = False
                     main()
 
-CM.clearscreen()
 if platform == "linux" or platform == "linux2":
+    os.system('clear')
     linux()
 elif platform == "win32":
+    os.system('cls')
     win()
 else:
     print("Platform not supported")
