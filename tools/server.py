@@ -1,26 +1,13 @@
-import socket,threading
-try:
-    import requests
-except:
-    print('Module "Requests" not found.')
-    xd = input("Would you like to install it automatically? (\033[0;33mY\033[97;40m/\033[0;33mN\033[92;40m\033[97;40m): ")
-    if xd == "Y":
-        os.system("pip3 install requests")
-    if xd == "y":
-        os.system("pip3 install requests")
-    else:
-        exit()
-    
+import socket
+import threading
+import datetime
 
-host = input("What is your computer's local IP? Ex. 192.168.0.15: ")
+host = '127.0.0.1'
 port = 14900
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((host, port))
 server.listen()
-
-print('')
-print("Server is hosted at", requests.get('http://ip.42.pl/raw').text)
 
 clients = []
 nicknames = []
@@ -44,15 +31,16 @@ def handle(client):
 
 def receive():
     while True:
+        now = datetime.datetime.now()
         client, address = server.accept()
-        print("Connected with {}\n".format(str(address)))
+        print(str(now.strftime("\033[96;40m%H\033[97;40m:\033[96;40m%M\033[97;40m:\033[96;40m%S\033[97;40m ")) + "Connected with {}\n".format(str(address)))
 
         client.send('NICK'.encode('ascii'))
         nickname = client.recv(1024).decode('ascii')
         nicknames.append(nickname)
         clients.append(client)
 
-        print("Nickname is {}\n".format(nickname))
+        print(str(now.strftime("\033[96;40m%H\033[97;40m:\033[96;40m%M\033[97;40m:\033[96;40m%S\033[97;40m ")) + "Nickname is {}\n".format(nickname))
         broadcast("{} joined!\n".format(nickname).encode('ascii'))
         client.send('\nConnected to server!\n'.encode('ascii'))
 
