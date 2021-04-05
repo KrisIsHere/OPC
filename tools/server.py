@@ -1,6 +1,7 @@
 import socket
 import threading
 import datetime
+import requests
 
 host = '127.0.0.1'
 port = 14900
@@ -8,6 +9,8 @@ port = 14900
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((host, port))
 server.listen()
+
+print("Server is hosted at", requests.get('http://ip.42.pl/raw').text)
 
 clients = []
 nicknames = []
