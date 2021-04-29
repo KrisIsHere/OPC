@@ -7,14 +7,6 @@ import datetime
 def chat():
         nickname = input("Choose your \033[0;31mnickname\033[97;40m: ")
         server = input("Enter \033[92;40mserver \033[0;31mIP\033[97;40m: ")
-        proxy = input("Proxy (e.g localhost:9050): ")
-
-        proxy1 =  proxy #if this proxy doesnt work and the script gives you an error r>
-
-        os.environ['sock5_proxy'] = proxy1
-        os.environ['sock5_proxy'] = proxy1
-        os.environ['sock5_proxy'] = proxy1
-        os.environ['sock5_PROXY'] = proxy1
 
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect((server, 14900))
