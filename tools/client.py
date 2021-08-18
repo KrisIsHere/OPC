@@ -5,8 +5,8 @@ from sys import platform
 import datetime
 
 def chat():
-        nickname = input("Choose your \033[0;31mnickname\033[97;40m: ")
-        server = input("Enter \033[92;40mserver \033[0;31mIP\033[97;40m: ")
+        nickname = input("Choose your nickname: ")
+        server = input("Enter server IP: ")
 
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect((server, 14900))
@@ -27,7 +27,7 @@ def chat():
         def write():
             while True:
                 now = datetime.datetime.now()
-                message = str(now.strftime("\033[96;40m%H\033[97;40m:\033[96;40m%M\033[97;40m:\033[96;40m%S")) + ' \033[38;2;255;0;211m| \033[0;31m{}\033[97;40m:\033[92;40m {}\033[97;40m'.format(nickname, input(''))
+                message = str(now.strftime("%H:%M:%S")) + ' | {}: {}'.format(nickname, input(''))
                 client.send(message.encode('ascii'))
 
         receive_thread = threading.Thread(target=receive)
