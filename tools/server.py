@@ -36,14 +36,14 @@ def receive():
     while True:
         now = datetime.datetime.now()
         client, address = server.accept()
-        print(str(now.strftime("\033[96;40m%H\033[97;40m:\033[96;40m%M\033[97;40m:\033[96;40m%S\033[97;40m ")) + "Connected with {}\n".format(str(address)))
+        print(str(now.strftime("%H:%M:%S ")) + "Connected with {}\n".format(str(address)))
 
         client.send('NICK'.encode('ascii'))
         nickname = client.recv(1024).decode('ascii')
         nicknames.append(nickname)
         clients.append(client)
 
-        print(str(now.strftime("\033[96;40m%H\033[97;40m:\033[96;40m%M\033[97;40m:\033[96;40m%S\033[97;40m ")) + "Nickname is {}\n".format(nickname))
+        print(str(now.strftime("%H:%M:%S ")) + "Nickname is {}\n".format(nickname))
         broadcast("{} joined!\n".format(nickname).encode('ascii'))
         client.send('\nConnected to server!\n'.encode('ascii'))
 
